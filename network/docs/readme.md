@@ -22,4 +22,4 @@ sudo ufw allow 8080/tcp
 ```
 
 ## also make sure that your router don't have ap isolation
-diable ap isolation on your router
+disable ap isolation on your router
