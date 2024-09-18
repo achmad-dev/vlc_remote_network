@@ -73,8 +73,8 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
                 children: [
                   // Volume Up
                   IconButton(
-                    icon: Icon(Icons.arrow_upward),
-                    iconSize: 50,
+                    icon: Icon(Icons.arrow_upward_sharp),
+                    iconSize: 40,
                     style:
                         IconButton.styleFrom(backgroundColor: Colors.grey[500]),
                     onPressed: () {
@@ -87,8 +87,8 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.skip_previous),
-                        iconSize: 50,
+                        icon: Icon(Icons.skip_previous_sharp),
+                        iconSize: 40,
                         style: IconButton.styleFrom(
                             backgroundColor: Colors.grey[500]),
                         onPressed: () {
@@ -97,20 +97,23 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.pause),
-                        iconSize: 50,
-                        style: IconButton.styleFrom(
-                            backgroundColor: Colors.grey[500]),
+                        icon: Icon(
+                          Icons.pause_circle_outline_outlined,
+                          color: Colors.grey[500],
+                        ),
+                        iconSize: 40,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                         onPressed: () {
                           // TODO: Implement play/pause functionality
                           sendCommand('start');
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.skip_next),
+                        icon: Icon(Icons.skip_next_sharp),
                         style: IconButton.styleFrom(
                             backgroundColor: Colors.grey[500]),
-                        iconSize: 50,
+                        iconSize: 40,
                         onPressed: () {
                           // TODO: Implement next track functionality
                           sendCommand('next');
@@ -120,10 +123,10 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
                   ),
                   // Volume Down
                   IconButton(
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.arrow_downward_sharp),
                     style:
                         IconButton.styleFrom(backgroundColor: Colors.grey[500]),
-                    iconSize: 50,
+                    iconSize: 40,
                     onPressed: () {
                       // TODO: Implement volume down functionality
                       sendCommand('volumeDown');
