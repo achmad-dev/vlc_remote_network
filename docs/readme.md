@@ -52,4 +52,5 @@ eg: `http://192.168.1.xxx:8080/vlc`
 
 ## For note
 
-this is working on ubuntu 22.04 also make sure that the vlc is running on top focused window when the go app running
+- this is working on ubuntu 22.04 also make sure that the vlc is running on top focused window when the go app running
+- also this is working when vlc already running a playlist(because I'm myself is a binge-watching person)
