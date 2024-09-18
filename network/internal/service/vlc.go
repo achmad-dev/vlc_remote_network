@@ -27,10 +27,8 @@ func NewVlcService(logger *logrus.Logger, keyBonding *keytap.KeyBonding) VlcServ
 	}
 }
 
-// NOTE: for linux only also linux it's important to wait two seconds before keypress
-
 func (b *baseVlcService) StartOrStop() error {
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_SPACE)
 	err := b.keyBonding.Launching()
 	if err != nil {
@@ -40,7 +38,7 @@ func (b *baseVlcService) StartOrStop() error {
 }
 
 func (b *baseVlcService) VolumeUp() error {
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_UP)
 	err := b.keyBonding.Launching()
 	if err != nil {
@@ -50,7 +48,7 @@ func (b *baseVlcService) VolumeUp() error {
 }
 
 func (b *baseVlcService) VolumeDown() error {
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_DOWN)
 	err := b.keyBonding.Launching()
 	if err != nil {
@@ -60,7 +58,7 @@ func (b *baseVlcService) VolumeDown() error {
 }
 
 func (b *baseVlcService) Next() error {
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_N)
 	err := b.keyBonding.Launching()
 	if err != nil {
@@ -70,7 +68,7 @@ func (b *baseVlcService) Next() error {
 }
 
 func (b *baseVlcService) Previous() error {
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_P)
 	err := b.keyBonding.Launching()
 	if err != nil {
