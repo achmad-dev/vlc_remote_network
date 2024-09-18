@@ -1,5 +1,7 @@
 ## vlc_remote_network
-[demo.webm](https://github.com/user-attachments/assets/fb296376-3c0d-43a1-bfe0-a327c7d88bd1)
+
+![demo](https://github.com/user-attachments/assets/60287856-f6d2-4899-90c7-459b68e1b962)
+
 ![demo](https://github.com/user-attachments/assets/b9e8ec97-9fdc-400b-bea9-3b041e892fc7)
 
 ## How to use
