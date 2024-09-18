@@ -20,3 +20,6 @@ Make sure that your computer’s firewall allows incoming traffic on port 8080
 ```bash
 sudo ufw allow 8080/tcp
 ```
+
+## also make sure that your router don't have ap isolation
+diable ap isolation on your router
