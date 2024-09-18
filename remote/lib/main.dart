@@ -64,20 +64,7 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
                     },
                   ),
                   SizedBox(height: 20),
-                  FilledButton(
-                    child: Text('Connect'),
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Colors.purple[400],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    ),
-                    onPressed: () {
-                      // TODO: Implement connect button functionality
-                    },
-                  ),
+                  Icon(Icons.catching_pokemon_rounded),
                 ],
               ),
 
@@ -168,23 +155,27 @@ class _RemoteUIScreenState extends State<RemoteUIScreen> {
         body: jsonEncode(command),
         headers: {'Content-Type': 'application/json'},
       );
-      if (response.statusCode < 400 || response.statusCode < 500) {
+
+      // Check the status code correctly
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        // Status code 200-299 indicates success
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Command sent successfully'),
           ),
         );
       } else {
+        // Status code 400-499 and 500-599 indicate errors
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error sending command'),
+            content: Text('Error sending command: ${response.statusCode}'),
           ),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error sending command'),
+          content: Text('Error sending command: $e'),
         ),
       );
     }
