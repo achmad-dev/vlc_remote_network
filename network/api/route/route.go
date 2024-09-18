@@ -47,5 +47,5 @@ func InitRoute() {
 
 	// init router
 	logger.Info("Init route on port 8080")
-	logger.Fatal(http.ListenAndServe(":8080", nil))
+	logger.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
 }
