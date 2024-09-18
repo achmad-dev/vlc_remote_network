@@ -1,6 +1,7 @@
 ## vlc_remote_network
 
-[watch video](../assets/vlc_remote_network_demo.webm)
+[watch video](../assets/demo.webm)
+[watch demo image](../assets/demo.jpeg)
 
 ## How to use
 
