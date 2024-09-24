@@ -9,15 +9,18 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Handler is a interface for command handler
 type Handler interface {
 	VlcCommand(w http.ResponseWriter, r *http.Request)
 }
 
+// baseHandler is a base implementation of command handler
 type baseHandler struct {
 	logger     *logrus.Logger
 	vlcService service.VlcService
 }
 
+// NewHandler creates a new command handler
 func NewHandler(logger *logrus.Logger, service service.VlcService) Handler {
 	return &baseHandler{
 		logger:     logger,
@@ -25,6 +28,7 @@ func NewHandler(logger *logrus.Logger, service service.VlcService) Handler {
 	}
 }
 
+// enableCors enables cors for the handler
 func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*") // Allow all origins, or specify your allowed origins
 	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
@@ -32,7 +36,6 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 // NOTE: command handler for vlc
-
 func (b *baseHandler) VlcCommand(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	if r.Method != http.MethodPost {

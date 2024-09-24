@@ -8,6 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// InitLogger to init logger with custom format
 func InitLogger() *logrus.Logger {
 	logger := logrus.New()
 	logger.SetReportCaller(true)

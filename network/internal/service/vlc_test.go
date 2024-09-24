@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// TestVLCService tests vlc service
 func TestVLCService(t *testing.T) {
 	keyb, err := keytap.NewKeyBonding()
 	assert.NoError(t, err)

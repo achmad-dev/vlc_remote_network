@@ -10,25 +10,30 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// Route is a struct for route
 type Route struct {
 	Path    string
 	Method  string
 	Handler http.HandlerFunc
 }
 
+// routes is a slice of route
 var routes []Route
 
+// RegisterRoute registers a route
 func RegisterRoute(path string, method string, handler http.HandlerFunc) {
 	routes = append(routes, Route{path, method, handler})
 	http.HandleFunc(path, handler)
 }
 
+// ListRoutes lists all registered routes
 func ListRoutes(log *logrus.Logger) {
 	for _, route := range routes {
 		log.Infof("Registered route method: %s path: %s", route.Method, route.Path)
 	}
 }
 
+// InitRoute initializes routes
 func InitRoute() {
 	logger := logger.InitLogger()
 	// init keybonding for linux

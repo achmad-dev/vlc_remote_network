@@ -7,6 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// VlcService is a interface for vlcservice for controlling VLC media player
 type VlcService interface {
 	StartOrStop() error
 	VolumeUp() error
@@ -15,11 +16,13 @@ type VlcService interface {
 	Previous() error
 }
 
+// baseVlcService is a base implementation of vlc service
 type baseVlcService struct {
 	logger     *logrus.Logger
 	keyBonding *keytap.KeyBonding
 }
 
+// NewVlcService creates a new vlc service
 func NewVlcService(logger *logrus.Logger, keyBonding *keytap.KeyBonding) VlcService {
 	return &baseVlcService{
 		keyBonding: keyBonding,
@@ -27,6 +30,7 @@ func NewVlcService(logger *logrus.Logger, keyBonding *keytap.KeyBonding) VlcServ
 	}
 }
 
+// StartOrStop starts or stops VLC media player
 func (b *baseVlcService) StartOrStop() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_SPACE)
@@ -37,6 +41,7 @@ func (b *baseVlcService) StartOrStop() error {
 	return nil
 }
 
+// VolumeUp increases the volume of VLC media player
 func (b *baseVlcService) VolumeUp() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_UP)
@@ -47,6 +52,7 @@ func (b *baseVlcService) VolumeUp() error {
 	return nil
 }
 
+// VolumeDown decreases the volume of VLC media player
 func (b *baseVlcService) VolumeDown() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_DOWN)
@@ -57,6 +63,7 @@ func (b *baseVlcService) VolumeDown() error {
 	return nil
 }
 
+// Next plays the next track in VLC media player
 func (b *baseVlcService) Next() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_N)
@@ -67,6 +74,7 @@ func (b *baseVlcService) Next() error {
 	return nil
 }
 
+// Previous plays the previous track in VLC media player
 func (b *baseVlcService) Previous() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_P)
