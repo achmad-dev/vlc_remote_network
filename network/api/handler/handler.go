@@ -64,6 +64,10 @@ func (b *baseHandler) VlcCommand(w http.ResponseWriter, r *http.Request) {
 		err = b.vlcService.Next()
 	case "previous":
 		err = b.vlcService.Previous()
+	case "previous5s":
+		err = b.vlcService.Previous5s()
+	case "next5s":
+		err = b.vlcService.Next5s()
 	default:
 		http.Error(w, "Command not found", http.StatusNotFound)
 		return

@@ -1,0 +1,76 @@
+# gosec -fmt yaml -out gosec_output.yaml ./...
+# go sec output for checking security issues in the project
+errors: {}
+issues:
+    - severity: 2
+      confidence: 1
+      cwe:
+        id: "190"
+        name: Integer Overflow or Wraparound
+        description: The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.
+      ruleid: G115
+      what: integer overflow conversion int -> uint16
+      file: /home/alfazari/.cache/go-build/f2/f2a556c351017e407459392a2d6d678c28f76764b434e0dbbc24e14536f2ded0-d
+      code: "272: \n273: func upKey(key int) error {\n274: \tev := input_event{}\n"
+      line: "273"
+      col: "19"
+      nosec: false
+      suppressions: []
+      autofix: ""
+    - severity: 2
+      confidence: 1
+      cwe:
+        id: "190"
+        name: Integer Overflow or Wraparound
+        description: The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.
+      ruleid: G115
+      what: integer overflow conversion int -> uint16
+      file: /home/alfazari/.cache/go-build/f2/f2a556c351017e407459392a2d6d678c28f76764b434e0dbbc24e14536f2ded0-d
+      code: "248: \n249: func downKey(key int) error {\n250: \tev := input_event{}\n"
+      line: "249"
+      col: "19"
+      nosec: false
+      suppressions: []
+      autofix: ""
+    - severity: 2
+      confidence: 1
+      cwe:
+        id: "338"
+        name: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)
+        description: The product uses a Pseudo-Random Number Generator (PRNG) in a security context, but the PRNG's algorithm is not cryptographically strong.
+      ruleid: G404
+      what: Use of weak random number generator (math/rand or math/rand/v2 instead of crypto/rand)
+      file: /home/alfazari/projects/github/vlc_remote_network/network/pkg/utils/randomPassword.go
+      code: |
+        9: 	source := rand.NewSource(time.Now().Unix())
+        10: 	res := rand.New(source)
+        11: 	return res.Int()
+      line: "10"
+      col: "9"
+      nosec: false
+      suppressions: []
+      autofix: ""
+    - severity: 1
+      confidence: 2
+      cwe:
+        id: "676"
+        name: Use of Potentially Dangerous Function
+        description: The program invokes a potentially dangerous function that could introduce a vulnerability if it is used incorrectly, but the function can also be used safely.
+      ruleid: G114
+      what: Use of net/http serve function that has no support for setting timeouts
+      file: /home/alfazari/projects/github/vlc_remote_network/network/api/route/route.go
+      code: |
+        54: 	logger.Info("Init route on port 8080")
+        55: 	logger.Fatal(http.ListenAndServe("0.0.0.0:8080", nil))
+        56: }
+      line: "55"
+      col: "15"
+      nosec: false
+      suppressions: []
+      autofix: ""
+stats:
+    numfiles: 8
+    numlines: 362
+    numnosec: 0
+    numfound: 4
+gosecversion: dev

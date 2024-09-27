@@ -11,6 +11,8 @@ import (
 type VlcService interface {
 	StartOrStop() error
 	VolumeUp() error
+	Next5s() error
+	Previous5s() error
 	VolumeDown() error
 	Next() error
 	Previous() error
@@ -78,6 +80,28 @@ func (b *baseVlcService) Next() error {
 func (b *baseVlcService) Previous() error {
 	time.Sleep(time.Millisecond * 500)
 	b.keyBonding.SetKeys(keytap.VK_P)
+	err := b.keyBonding.Launching()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// next5s plays the next 5 seconds in VLC media
+func (b *baseVlcService) Next5s() error {
+	time.Sleep(time.Millisecond * 500)
+	b.keyBonding.SetKeys(keytap.VK_RIGHT)
+	err := b.keyBonding.Launching()
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// previous5s plays the previous 5 seconds in VLC media
+func (b *baseVlcService) Previous5s() error {
+	time.Sleep(time.Millisecond * 500)
+	b.keyBonding.SetKeys(keytap.VK_LEFT)
 	err := b.keyBonding.Launching()
 	if err != nil {
 		return err
